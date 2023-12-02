@@ -1,0 +1,9 @@
+app:
+  name: "yukiteru-amano"
+http:
+  port: 8000
+  read_timeout: 1m
+  write_timeout: 1m
+  shutdown_timeout: 5s
+tg:
+  token: "5944731024:AAGCikQUMGDzBsN3ZvjD4AYPOStYXaFjA80"
