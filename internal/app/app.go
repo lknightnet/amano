@@ -1,9 +1,6 @@
 package app
 
 import (
-	"context"
-	"github.com/go-telegram/bot"
-	"github.com/go-telegram/bot/models"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 	"log"
@@ -43,25 +40,4 @@ func RunAmano(cfg *config.Config) {
 	if err != nil {
 		log.Println(errors.Wrap(err, "Run: server shutdown"))
 	}
-}
-
-func RunBot(cfg *config.Config) {
-	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
-	defer cancel()
-
-	b, err := bot.New(cfg.TG.Token)
-	if err != nil {
-		log.Println(err)
-	}
-
-	b.RegisterHandler(bot.HandlerTypeMessageText, "/logs", bot.MatchTypeExact, logs)
-
-	b.Start(ctx)
-}
-
-func logs(ctx context.Context, b *bot.Bot, u *models.Update) {
-	b.SendMessage(ctx, &bot.SendMessageParams{
-		ChatID: u.Message.Chat.ID,
-		Text:   "i am work!",
-	})
 }

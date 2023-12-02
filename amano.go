@@ -2,7 +2,6 @@ package main
 
 import (
 	"log"
-	"time"
 	"yukiteru-amano/config"
 	"yukiteru-amano/internal/app"
 )
@@ -13,8 +12,5 @@ func main() {
 		log.Println(err)
 	}
 
-	go app.RunAmano(cfg)
-	go app.RunBot(cfg)
-
-	time.Sleep(8760 * time.Hour)
+	app.RunAmano(cfg)
 }
